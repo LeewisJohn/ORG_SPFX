@@ -1,0 +1,188 @@
+/*----------------genealogy-scroll----------*/
+.tree-container::-webkit-scrollbar {
+    width: 5px;
+    height: 8px;
+}
+
+.tree-container::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #e4e4e4;
+}
+
+.tree-container::-webkit-scrollbar-thumb {
+    background: #212121;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+
+.tree-container::-webkit-scrollbar-thumb:hover {
+    background: #d5b14c;
+    transition: 0.5s;
+}
+
+/*----------------genealogy-tree----------*/
+.tree-container {
+    white-space: nowrap;
+    overflow-y: hidden;
+    padding: 50px;
+    min-height: 500px;
+    padding-top: 10px;
+    text-align: center;
+}
+
+.tree-branch {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+    padding-top: 20px;
+}
+
+.tree-node {
+    text-align: center;
+    list-style-type: none;
+    position: relative;
+    padding: 20px 5px 0 5px;
+}
+
+.tree-node::before,
+.tree-node::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 50%;
+    border-top: 2px solid #ccc;
+    width: 50%;
+    height: 19px;
+}
+
+.tree-node::after {
+    right: auto;
+    left: 50%;
+    border-left: 2px solid #ccc;
+}
+
+.tree-node:only-child::after,
+.tree-node:only-child::before {
+    display: none;
+}
+
+.tree-node:only-child {
+    padding-top: 0;
+}
+
+.tree-node:first-child::before,
+.tree-node:last-child::after {
+    border: 0 none;
+}
+
+.tree-node:last-child::before {
+    border-right: 2px solid #ccc;
+    border-radius: 0 5px 0 0;
+}
+
+.tree-node:first-child::after {
+    border-radius: 5px 0 0 0;
+}
+
+.tree-branch::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    border-left: 2px solid #ccc;
+    width: 0;
+    height: 20px;
+}
+
+.node-content {
+    text-decoration: none;
+    /* color: #666; */
+    font-family: arial, verdana, tahoma;
+    font-size: 11px;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+.node-content:hover,
+.node-content:hover+.tree-branch .node-content {
+    background: #c8e4f8;
+    color: #000;
+}
+
+.node-content:hover+.tree-branch .tree-node::after,
+.node-content:hover+.tree-branch .tree-node::before,
+.node-content:hover+.tree-branch::before,
+.node-content:hover+.tree-branch .tree-branch::before {
+    border-color: #fbba00;
+}
+
+/*--------------member-card-design----------*/
+.node-content {
+    text-align: center;
+    border-radius: 4px;
+    position: relative;
+    border: 1px solid #e4e4e4;
+    /* background-color: #f6f8fa; */
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* min-width: 120px; */
+}
+
+.node-content img {
+    border-radius: 6px;
+    background-color: #fff;
+}
+
+.node-content .node-title {
+    padding: 5px 0;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 4px 4px 0 0;
+}
+
+.node-content .node-footer {
+    text-align: center;
+    padding: 5px 0;
+}
+
+.node-content .node-footer .name {
+    color: #000;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.node-content .node-footer .downline {
+    color: #000;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.node-title {
+    /* min-height: 75px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.tree-node {
+    height: 100%;
+}
+
+.tree-container>.tree-branch:before {
+    border-left: none;
+}
+
+.ms-BasePicker-text {
+    border-color: #d9d9d9;
+}
+
+.org_title {
+    font-size: 20px;
+}
+
+.ant-space-item {
+    z-index: 2;
+}

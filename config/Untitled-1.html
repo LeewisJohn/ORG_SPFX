@@ -1,0 +1,71 @@
+<html lang="en">
+
+<head>
+    <style>
+        [data-automation-id="CanvasSection"] {
+            padding-left: 3px !important;
+            padding-right: 3px !important;
+        }
+
+        [data-automation-id="image-webpart-text-overlay"] {
+            align-self: anchor-center;
+            justify-self: anchor-center;
+            width: auto;
+        }
+
+        [data-automation-id="overlay-text-wrapper"],
+        [id="imageOverlayTextEdit"] {
+            background-color: #eb600a;
+            height: 80px;
+            width: 250px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        [data-automation-id="CanvasControl"] {
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        [data-automation-id="CanvasControl"] [data-automation-id="imageRead"] img {
+            width: 100%;
+        }
+
+        [data-automation-id="imageRead"] figure {
+            width: 100% !important;
+        }
+    </style>
+
+    <script type="text/javascript">
+        function findElementWithRetry(selector, maxRetries = 100, interval = 0) {
+            let retries = 0;
+            return new Promise((resolve, reject) => {
+                const intervalId = setInterval(() => {
+                    const element = document.querySelector(selector);
+
+                    if (element) {
+                        clearInterval(intervalId);
+                        resolve(element);
+                    } else if (retries >= maxRetries) {
+                        clearInterval(intervalId);
+                        reject(new Error(`Element not found: ${selector}`));
+                    }
+
+                    retries++;
+                }, interval);
+            });
+        }
+
+        //data-automation-id="overlay-text-wrapper"
+        findElementWithRetry('[data-automation-id="CanvasControl"] [data-automation-id="imageRead"] img', 200, 100)
+            .then(element => {
+
+            })
+            .catch(error => {
+                console.error(error.message);
+            });
+    </script>
+</head>
+
+</html>
