@@ -26,7 +26,6 @@ export default class OrgApplicationCustomizer
   private async handle() {
     const commonService = new CommonService(this.context);
     const isCreated = await commonService.ensureList(ListName.Org);
-    commonService.test();
     if (isCreated) {
       const fieldsToCreate = [
         { [FieldName.Department]: (fields: IFields) => fields.addText(FieldName.Department) },

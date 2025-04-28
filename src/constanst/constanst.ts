@@ -20,4 +20,4 @@ export const HOMEPAGE = 'HomePage.aspx';
 
 export const BASE_URI = "https://test.sharepoint.com";
 
-export const RELATIVE_TEMPLATE_PATH = '/SitePages/Templates/Marketing.aspx'
+export const RELATIVE_TEMPLATE_PATH = '/SitePages/Templates/dpdp.aspx'

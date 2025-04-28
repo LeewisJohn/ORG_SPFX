@@ -4,7 +4,7 @@ import type { IOrgProps } from './IOrgProps';
 import FamilyTree from './FamilyTree';
 import { OrganizationItem } from '../../../type/types';
 import CommonService from '../../../service/common';
-import { FieldName, ListName } from '../../../constanst/constanst';
+import { FieldName } from '../../../constanst/constanst';
 
 const Org: React.FC<IOrgProps> = ({
   title,
@@ -20,7 +20,6 @@ const Org: React.FC<IOrgProps> = ({
   const isShowButton = commonService.isOwner()
   const [organization, setOrganization] = React.useState<OrganizationItem[]>([]);
 
-  // Xử lý chỉnh sửa node
   const handleEdit = async (updatedItem: OrganizationItem) => {
     const { Id, ...allowedValues } = updatedItem;
     await commonService.validateUpdateListItem(list, Id, allowedValues);
@@ -30,7 +29,6 @@ const Org: React.FC<IOrgProps> = ({
     setReload(new Date().getTime())
   };
 
-  // Xử lý thêm node mới
   const handleAdd = async (newItem: OrganizationItem) => {
     const path = context.pageContext.web.serverRelativeUrl === "/" ? "" : context.pageContext.web.serverRelativeUrl;
     const decodeUrl = `${path}/Lists/${list}`
@@ -39,7 +37,6 @@ const Org: React.FC<IOrgProps> = ({
     setReload(new Date().getTime());
   };
 
-  // Xử lý xóa node
   const handleDelete = async (id: string) => {
     await commonService.removeItem(list, id);
     setOrganization((prev: any) =>
@@ -60,33 +57,11 @@ const Org: React.FC<IOrgProps> = ({
       FieldName.User
     ]);
     setOrganization(items);
-
-    // const items32 = await commonService.getAllItemsByTitle("Tasks", ["Id"]);
-    // for (let i = 0; i < items32.length; i++) {
-    //   await commonService.removeItem("Tasks", items32[i].Id);
-    // }
-  }
-
-  const refreshHeght = () => {
-    if (!organization.length) return;
-    const treeNodes = document.querySelectorAll('.node-title') as any;
-    const maxHeight = Math.max(...[...(treeNodes)].map(x => x.offsetHeight));
-    // Apply the maximum height to all nodes
-    (window as any).hasAv = (window as any).hasAv || (organization.some(a => a.User) ? 48 : 1);
-    treeNodes.forEach((node: any) => {
-      node.style.height = maxHeight - 10 + ((window as any).hasAv == 1 ? 0 : (window as any).hasAv) + 'px';
-    });
-    (window as any).hasAv = 1;
   }
 
   React.useEffect(() => {
     handle();
-    // refreshHeght();
   }, [reload, list])
-
-  React.useEffect(() => {
-    // refreshHeght();
-  }, [organization])
 
   React.useEffect(() => {
     const style = document.createElement('style');
