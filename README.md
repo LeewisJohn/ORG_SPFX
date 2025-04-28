@@ -3,6 +3,7 @@
 ## Summary
 
 - Organizational chart with multiple levels
+ ![alt text]([http://url/to/img.pn](https://github.com/LeewisJohn/ORG_SPFX/blob/main/img/org.png)
 - Apply template for your organization with a designed template page
 Change the location of the template by setting the constant RELATIVE_TEMPLATE_PATH: "/SitePages/Templates/dpdp.aspx" in src/constants/constants.ts
 
